@@ -6,20 +6,50 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Camara</title>
     <link rel="manifest" href="./manifest.json">
+    <style>
+        #galleryContainer {
+            overflow-x: auto; /* Permite el scroll horizontal */
+            white-space: nowrap; /* Evita que las imágenes salten de línea */
+            padding: 10px 0;
+            border-top: 1px solid #ccc;
+            margin-top: 20px;
+        }
+        .gallery-item {
+            display: inline-block; /* Las imágenes están en línea */
+            margin-right: 10px;
+            width: 100px; /* Tamaño fijo para la miniatura */
+            height: 100px;
+            object-fit: cover; /* Asegura que la imagen se vea bien en el espacio */
+            border: 2px solid #333;
+        }
+    </style>
 </head>
 
 <body>
 
     <button id="openCamera">Permiso</button>
+    
     <div id="cameraContainer" style="display: none">
-        <video id="video" autoplay width="320" height="240">
-        </video>
-        <button id="takePhoto">Tomar foto</button>
-        <canvas id="canvas" width="300" height="300" style="display: none">
-        </canvas>
+        <video id="video" autoplay width="320" height="240"></video>
+        
+        <div>
+            <button id="takePhoto">Tomar foto</button>
+            <button id="switchCamera">Cambiar Cámara</button> 
+        </div>
+
+        <canvas id="canvas" width="320" height="240" style="display: none"></canvas>
     </div>
+
+    <div id="gallerySection" style="margin-top: 20px;">
+        <h2>Galería Temporal</h2>
+        <button id="clearGallery" style="display: none;">Borrar Galería</button>
+        <div id="galleryContainer">
+            </div>
+    </div>
+
 
     <script src="./app.js"></script>
 </body>
+
 
 </html>
